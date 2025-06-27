@@ -4,16 +4,16 @@
 #include "vector"
 #include <algorithm>
 
-void IScene::AddGameObject(std::unique_ptr<IGameObject> gameObject)
+void IScene::AddGameObject(std::shared_ptr<IGameObject> gameObject)
 {
      std::lock_guard<std::mutex> lock(m_mutex);
     gameObjects.push_back(std::move(gameObject));
 }
 
-void IScene::RemoveGameObject(std::unique_ptr<IGameObject> gameObject)
+void IScene::RemoveGameObject(std::shared_ptr<IGameObject> gameObject)
 {
     std::lock_guard<std::mutex> lock(m_mutex);
-    auto it = std::find_if(gameObjects.begin(), gameObjects.end(), [&](std::unique_ptr<IGameObject> &obj)
+    auto it = std::find_if(gameObjects.begin(), gameObjects.end(), [&](std::shared_ptr<IGameObject> &obj)
                            { return obj->id == gameObject->id; });
 
     if (it != gameObjects.end())

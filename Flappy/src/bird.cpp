@@ -1,7 +1,7 @@
 #include "bird.h"
 #include "raylib.h"
-#include <iostream>
 #include "settings.h"
+#include <iostream>
 
 Bird::Bird() : IGameObject()
 {
@@ -9,14 +9,16 @@ Bird::Bird() : IGameObject()
 
 Bird::~Bird()
 {
+    for (const auto& i : images)
+        UnloadTexture(i);
 }
 
 void Bird::Start()
 {
     images = {
-        LoadTexture("./assets/image/bluebird-downflap.png"),
-        LoadTexture("./assets/image/bluebird-midflap.png"),
-        LoadTexture("./assets/image/bluebird-upflap.png"),
+        LoadTexture("image/bluebird-downflap.png"),
+        LoadTexture("image/bluebird-midflap.png"),
+        LoadTexture("image/bluebird-upflap.png"),
     };
     position = {60, GAME_VIEWPORT_CENTER};
     scale = 1;

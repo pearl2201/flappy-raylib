@@ -3,23 +3,21 @@
 #include "iscene.h"
 #include "raylib.h"
 #include "igameobject.h"
-class Bird : public IGameObject
+#include "bird.h"
+
+class Pipe : public IGameObject
 {
 public:
     // Implement the virtual functions from IScene
     void Start() override;
     void Update(float delta) override;
     void Draw() override;
-    Bird();
-    ~Bird() override; // Mark as override
+    bool CheckCollide(Bird bird);
+    Pipe(Vector2 position);
+    ~Pipe() override; // Mark as override
 private:
-    std::array<Texture, 3> images;
+    Texture pipeUpTexture;
+    Texture pipeDownTexture;
     Vector2 position;
-    float rotation;
-    float scale;
-    float imageFrameDuration;
-    float imageFrameCooldown;
-    int currentFrame;
-    float vel;
-
+    float gap;
 };
