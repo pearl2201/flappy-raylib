@@ -11,10 +11,11 @@ public:
 	void Start() override;
 	void Update(float delta) override;
 	void Draw() override;
+	bool IsDeath();
 	Bird();
 	~Bird() override; // Mark as override
 private:
-	std::array<Texture, 3> images;
+	std::array<Texture, 3>& images;
 	Vector2 position;
 	float rotation;
 	float scale;
@@ -22,5 +23,5 @@ private:
 	float imageFrameCooldown;
 	int currentFrame;
 	float vel;
-
+	Rectangle collider;
 };

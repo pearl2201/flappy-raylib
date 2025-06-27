@@ -12,6 +12,7 @@ by Jeffery Myers is marked with CC0 1.0. To view a copy of this license, visit h
 #include <memory>
 #include "menu_scene.h"
 #include "settings.h"
+#include "asset_manage.h"
 
 
 int main()
@@ -27,7 +28,7 @@ int main()
 
 	SetTargetFPS(30);
 
-
+	AssetManager::getInstance().Load();
 	std::unique_ptr<MenuScene> scene = std::make_unique<MenuScene>();
 	scene->Start();
 
@@ -35,7 +36,7 @@ int main()
 	while (!WindowShouldClose())		// run the loop untill the user presses ESCAPE or presses the Close button on the window
 	{
 		float dt = GetFrameTime();
-		scene->Update(dt);
+		scene->Update(1.0f/30.0f);
 		scene->Draw();
 	}
 

@@ -12,12 +12,13 @@ public:
     void Start() override;
     void Update(float delta) override;
     void Draw() override;
-    bool CheckCollide(Bird bird);
+    bool CheckCollide(const Bird& bird);
     Pipe(Vector2 position);
     ~Pipe() override; // Mark as override
 private:
-    Texture pipeUpTexture;
-    Texture pipeDownTexture;
+    Texture2D pipeUpTexture;
+    Texture2D pipeDownTexture;
     Vector2 position;
     float gap;
+    Rectangle collider;
 };

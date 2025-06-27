@@ -133,6 +133,7 @@
     </ContentWithTargetPath>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\asset_manage.cpp" />
     <ClCompile Include="src\bird.cpp" />
     <ClCompile Include="src\game_scene.cpp" />
     <ClCompile Include="src\id_manager.cpp" />
@@ -141,8 +142,10 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\menu_scene.cpp" />
     <ClCompile Include="src\pipe.cpp" />
+    <ClCompile Include="src\start_popup.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\asset_manage.h" />
     <ClInclude Include="src\bird.h" />
     <ClInclude Include="src\id_manager.h" />
     <ClInclude Include="src\igameobject.h" />
@@ -151,6 +154,7 @@
     <ClInclude Include="src\pipe.h" />
     <ClInclude Include="src\resource_dir.h" />
     <ClInclude Include="src\settings.h" />
+    <ClInclude Include="src\start_popup.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

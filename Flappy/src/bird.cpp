@@ -2,24 +2,22 @@
 #include "raylib.h"
 #include "settings.h"
 #include <iostream>
+#include "asset_manage.h"
+#include "menu_scene.h"
 
-Bird::Bird() : IGameObject()
+Bird::Bird() : IGameObject(), images(AssetManager::getInstance().birds)
 {
+    
 }
 
 Bird::~Bird()
 {
-    for (const auto& i : images)
-        UnloadTexture(i);
+
 }
 
 void Bird::Start()
 {
-    images = {
-        LoadTexture("image/bluebird-downflap.png"),
-        LoadTexture("image/bluebird-midflap.png"),
-        LoadTexture("image/bluebird-upflap.png"),
-    };
+    
     position = {60, GAME_VIEWPORT_CENTER};
     scale = 1;
     rotation = 0;
@@ -44,11 +42,12 @@ void Bird::Update(float deltaTime)
 
     vel += GRAVITY * deltaTime;
     position.y += vel * deltaTime;
-    if (position.y > SCENE_GROUND)
+    if (position.y >= SCENE_GROUND)
     {
         position.y = SCENE_GROUND;
     }
 }
+
 
 void Bird::Draw()
 {
@@ -56,4 +55,9 @@ void Bird::Draw()
     x.x = x.x - images[0].width / 2;
     x.y = x.y - images[0].height / 2;
     DrawTextureEx(images[currentFrame], x, rotation, scale, WHITE);
+}
+
+bool Bird::IsDeath()
+{
+    return position.y >= SCENE_GROUND;
 }
